@@ -1,17 +1,35 @@
 .building{
-    width: 500px;
-    /* height: 500px; */
+    width: 60%;
     margin: 0 auto;
+    position: relative;
 }
 .floor{
    height: 100px;
    border-bottom: 2px solid #ccc; 
 }
 .floor-name{
-    float : right
+    float : right;
+    margin-top: -12px;
 }
 .lift{
-    background: blue;
+    position: absolute;
+    left: 100px;
+    top: 540px;
     width: 50px;
-    height: 30px;
+    height: 70px;
+    transition: 3s linear;
+}
+
+.lift-count{
+    position: absolute;
+    top: 620px;
+}
+.panel{
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    padding-top: 60px;
+}
+.d-flex{
+    display: flex;
 }

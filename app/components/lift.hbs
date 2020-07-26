@@ -1,0 +1,10 @@
+<div class="d-flex">
+    {{#each @building.lifts as |lift|}}
+        <img src="assets/images/lift.png" id="lift_{{lift.num}}" class="lift" style="left: {{lift.width}}px;" height="70px" width="40px">
+    {{/each}}
+</div>
+<div class="d-flex">
+    {{#each @building.lifts as |lift|}}
+    <span class="lift-count" style="left: {{lift.num_width}}px;">{{lift.num}}</span>
+    {{/each}}
+</div>
