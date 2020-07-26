@@ -1,18 +1,7 @@
 <div>
     The elevator game content here
     <div class="building">
-        {{#each @model.levels as |level|}}
-            <div class="floor">
-                <div class="panel">
-                    <button type="button" {{on "click" (fn this.goUp level)}}>Up</button>
-                    <button type="button" {{on "click" (fn this.godown level)}}>down</button>
-                </div>
-                <p class="floor-name">Floor {{decrement-floor total=@model.levels.length current=level}}</p>
-            </div>
-        {{/each}}
-        {{#each @model.lifts as |lift|}}
-            <div class="lift">
-            </div>
-        {{/each}}
+        <Floor @building={{@model}} />
+        <Lift @building={{@model}} />
     </div>
 </div>

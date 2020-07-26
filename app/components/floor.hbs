@@ -1,0 +1,13 @@
+{{#each @building.levels as |floor|}}
+<div class="floor">
+    <div class="panel">
+        {{#if floor.up}}
+        <img src="assets/images/up.png" style="cursor: pointer;" height="15px" width="30px" {{on "click" (fn this.goUp floor.num)}}>
+        {{/if}}
+        {{#if floor.down}}
+        <img src="assets/images/down.png" style="cursor: pointer;" height="15px" width="30px" {{on "click" (fn this.goDown floor.num)}}>
+        {{/if}}
+    </div>
+    <p class="floor-name">{{floor.name}} Floor</p>
+</div>
+{{/each}}
