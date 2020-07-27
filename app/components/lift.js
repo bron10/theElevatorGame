@@ -65,15 +65,13 @@ export default class LiftComponent extends Component {
         );
         if (!findLiftsBelowThisFloor.length) {
           findLiftsBelowThisFloor = lifts.filter(
-            (lift) => lift.direction === DOWN_DIRECTION && lift.level > level
+            (lift) => lift.direction === DOWN_DIRECTION
           );
         }
-        console.log('below', findLiftsBelowThisFloor, lifts)
         const { lift } = this.findMyLift(
           level,
           findLiftsBelowThisFloor
         );
-        console.log(lift)
         this.moveLift(level, direction, lift);
       } else {
         let findLiftsAboveThisFloor = lifts.filter(
@@ -81,15 +79,13 @@ export default class LiftComponent extends Component {
         );
         if (!findLiftsAboveThisFloor.length) {
           findLiftsAboveThisFloor = lifts.filter(
-            (lift) => lift.direction === UP_DIRECTION && lift.level < level
+            (lift) => lift.direction === UP_DIRECTION
           );
         }
-        console.log('above', findLiftsAboveThisFloor, lifts)
         const { lift } = this.findMyLift(
           level,
           findLiftsAboveThisFloor
         );
-        console.log(lift)
         this.moveLift(level, direction, lift);
       }
     }
@@ -117,9 +113,7 @@ export default class LiftComponent extends Component {
     const liftToMoveIndex = lifts.findIndex(
       (ele) => ele.num === lift.num
     );
-    // console.log(liftToMoveIndex)
     let thisLift = lifts[liftToMoveIndex];
-    // console.log(thisLift);
     // if the lift is already moving then do nothing
     if (thisLift.state !== 0) return;
 
@@ -134,12 +128,11 @@ export default class LiftComponent extends Component {
       if (lift.num == elevator.num) {
         const getElevatorFromDOM = document.getElementById('lift_' + elevator.num);
         if (elevator.direction) {
-          set(lift, 'levelHeight', this.levelUp(level));
+          set(lift, 'levelHeight', this.newLevel(level));
         } else {
-          set(lift, 'levelHeight', this.levelDown(lift.level, level));
+          set(lift, 'levelHeight', this.newLevel(level));
         }
         getElevatorFromDOM.addEventListener('transitionend', () => {
-          console.log('Transition ended!!');
           set(lift, 'level', level)
           set(lift, 'direction', direction);
           set(lift, 'state', 0);
@@ -150,16 +143,8 @@ export default class LiftComponent extends Component {
     this.set('building.lifts', updated);
   }
 
-  levelUp(level) {
+  newLevel(level) {
     return (level * 100) + level * 2;
-  }
-
-  levelDown(currentLevel, newLevel) {
-    if (currentLevel > newLevel) {
-      return (newLevel * 100) + (newLevel * 2);
-    }
-    let levelDifference = currentLevel - newLevel;
-    return (levelDifference * 100);
   }
 
   didUpdate() {
