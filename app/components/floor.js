@@ -4,18 +4,18 @@ import { inject as service } from '@ember/service';
 
 export default class FloorComponent extends Component {
   @service('lift-mover') liftMoverService;
-  constructor(){
+  constructor() {
     super(...arguments)
     // console.log("moveIt", this.moveIt);
   }
 
   @action
   goUp(level) {
-    this.liftMoverService.trigger('move', {level, direction : 1, lift : 1}) 
+    this.liftMoverService.trigger('move', { level, direction: 1 })
   }
 
   @action
   goDown(level) {
-    this.liftMoverService.trigger('move', {level, direction : 0, lift : 1})
+    this.liftMoverService.trigger('move', { level, direction: 0 })
   }
 }
