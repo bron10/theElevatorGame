@@ -3,9 +3,11 @@
     <div class="panel">
         {{#if floor.up}}
         <img src="assets/images/up.png" style="cursor: pointer;" height="15px" width="30px" {{on "click" (fn this.goUp floor.num)}}>
+        {{!-- <img src="assets/images/up.png" style="cursor: pointer;" height="15px" width="30px" {{action "move"}}> --}}
         {{/if}}
         {{#if floor.down}}
         <img src="assets/images/down.png" style="cursor: pointer;" height="15px" width="30px" {{on "click" (fn this.goDown floor.num)}}>
+        {{!-- <img src="assets/images/down.png" style="cursor: pointer;" height="15px" width="30px" {{action 'move'}}> --}}
         {{/if}}
     </div>
     <p class="floor-name">{{floor.name}} Floor</p>

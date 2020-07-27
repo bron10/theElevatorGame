@@ -14,7 +14,7 @@
 .lift{
     position: absolute;
     left: 100px;
-    top: 540px;
+    bottom: 0;
     width: 50px;
     height: 70px;
     transition: 3s linear;
