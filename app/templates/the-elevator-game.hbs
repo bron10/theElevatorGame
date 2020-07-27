@@ -1,7 +1,9 @@
 <div>
     The elevator game content here
     <div class="building">
-        <Floor @building={{@model}} />
-        <Lift @building={{@model}} />
+        {{floor building= model}}
+        {{lift building = model}}
+        {{!-- <Floor @building={{@model}} />
+        <Lift @building={{@model}} /> --}}
     </div>
 </div>
