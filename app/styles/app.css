@@ -1,6 +1,6 @@
 .building{
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 40px auto;
     position: relative;
 }
 .floor{
@@ -22,7 +22,7 @@
 
 .lift-count{
     position: absolute;
-    top: 620px;
+    top: 720px;
 }
 .panel{
     display: flex;

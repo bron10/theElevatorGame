@@ -1,28 +1,21 @@
 import Route from '@ember/routing/route';
-import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 export default class TheElevatorGameRoute extends Route {
   @service('lift-mover') liftMoverService;
-  constructor(){
+  constructor() {
     super(...arguments)
-    // console.log("moveIt", this.moveIt);
-
-    // this.liftMoverService.on('move', (data) => {
-    //   console.log("data", data)
-    //   // this.model({level : data.level, lift : data.lift})
-    // })
   }
 
   model(selectedLift) {
-    const noOfFloors = 6, noOfLifts = 3,groundFloor = 0;
+    const noOfFloors = 6, noOfLifts = 3, groundFloor = 0;
     const lifts = [];
     const floors = [];
-    
+
     for (let i = groundFloor; i <= noOfFloors; i++) {
       const upBtn = i >= groundFloor && i < noOfFloors;
       const downBtn = i > groundFloor && i <= noOfFloors;
       const floorName = i == groundFloor ? 'Ground' : i + 'th';
-      floors.push({ 
+      floors.push({
         up: upBtn,
         down: downBtn,
         num: i,
@@ -32,16 +25,18 @@ export default class TheElevatorGameRoute extends Route {
     for (let i = groundFloor; i < noOfLifts; i++) {
       let level = 0;
       let liftNo = i + 1;
-      let levelHeight = 0;
-      if(selectedLift && selectedLift.lift === liftNo){
+      if (selectedLift && selectedLift.lift === liftNo) {
         level = selectedLift.level;
       }
-      lifts.push({ 
-        level,
-        levelHeight : 100 * level,
+      lifts.push({
+        level: level,
+        direction: 1,
+        levelHeight: 100 * level,
         num: liftNo,
+        state: 0,
         width: 200 * liftNo,
-        num_width: 200 * liftNo + 20 });
+        num_width: 200 * liftNo + 20
+      });
     }
 
     console.log("levels", lifts);
