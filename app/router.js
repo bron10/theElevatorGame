@@ -7,5 +7,5 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('the-elevator-game');
+  this.route('the-elevator-game', { path: '/the-elevator-game' });
 });
